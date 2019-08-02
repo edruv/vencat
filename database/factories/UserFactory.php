@@ -2,6 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\User;
+use App\Ubicacion;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -17,6 +18,7 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+	$ubics = Ubicacion::pluck('id')->toArray();
     return [
         'name' => $faker->firstName,
 		  'lastN' => $faker->lastName,
@@ -24,6 +26,7 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => bcrypt('123456'), // password
+		  'ubicacion' => $faker->randomElement($ubics),
         // 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
     ];
