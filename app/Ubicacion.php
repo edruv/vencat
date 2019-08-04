@@ -16,6 +16,6 @@ class Ubicacion extends Model
 	];
 
 	function users(){
-		return $this->belongsTo('App\User');
+		return $this->hasMany('App\User','ubicacion');
 	}
 }

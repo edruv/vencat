@@ -40,6 +40,6 @@ class User extends Authenticatable
     ];
 
 	function ubication(){
-		return $this->hasMany('App\Ubicacion');
+		return $this->belongsTo('App\Ubicacion','id');
 	}
 }
