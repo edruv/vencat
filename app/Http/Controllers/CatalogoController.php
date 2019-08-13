@@ -19,13 +19,18 @@ class CatalogoController extends Controller
 		// $catalogos = Catalogo::with('tienda')->get()->sortBy('tienda');
 		// $catalogos = Catalogo::all()->sortBy('tienda');
 		$catalogos = Catalogo::all()->sortBy('tienda')->sortByDesc('year');
+		// $catalogos = Catalogo::with('tienda')->get()->sortBy('tienda')->sortByDesc('year');
 
 		foreach ($catalogos as $catalogo) {
 			$t = Tienda::find($catalogo->tienda);
 			$catalogo->tienda = $t->name;
-			// echo $catalogo->tienda.'<br>';
-			// echo $catalogo->tienda.'-'.$t->name.'<br>';
 		}
+		// foreach ($catalogos as $catalogo) {
+		// 	$t = Tienda::find($catalogo->tienda);
+		// 	$catalogo->tienda = $t->name;
+		// 	// echo $catalogo->tienda.'<br>';
+		// 	// echo $catalogo->tienda.'-'.$t->name.'<br>';
+		// }
 		return view('catalogo.index',compact('catalogos'));
 	}
 
