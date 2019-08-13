@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Ubicacion;
 use Illuminate\Http\Request;
 
+/**
+ * //// NOTE:
+ * agrear slug para validar que sea unico
+ */
+
 class UbicacionController extends Controller
 {
 	/**
