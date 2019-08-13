@@ -42,4 +42,11 @@ class User extends Authenticatable
 	function ubication(){
 		return $this->belongsTo('App\Ubicacion','id');
 	}
+	/**
+	 * Role User
+	 */
+	function RolUser(){
+		return $this->belongsToMany('Caffeinated\Shinobi\Models\Role','role_user')->withPivot('role_id','user_id');
+	}
+
 }
