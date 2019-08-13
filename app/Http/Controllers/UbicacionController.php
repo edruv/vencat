@@ -12,9 +12,9 @@ class UbicacionController extends Controller
 	*
 	* @return \Illuminate\Http\Response
 	*/
-	public function index()
-	{
-//
+	public function index(){
+		$ubicaciones = Ubicacion::all();
+		return view('ubicacion.index',compact('ubicaciones'));
 	}
 
 	/**
@@ -22,9 +22,8 @@ class UbicacionController extends Controller
 	*
 	* @return \Illuminate\Http\Response
 	*/
-	public function create()
-	{
-//
+	public function create(){
+		return view('ubicacion.create');
 	}
 
 	/**
@@ -35,7 +34,15 @@ class UbicacionController extends Controller
 	*/
 	public function store(Request $request)
 	{
-//
+		$request->validate([
+			'name' => 'regex:/^[a-zA-Z0-9-_\s]+$/|required',
+		]);
+
+		$ubicacion = new Ubicacion();
+		$ubicacion->name = $request->input('name');
+		$ubicacion->save();
+
+		return redirect()->route('ubicaciones.index');
 	}
 
 	/**
@@ -46,7 +53,7 @@ class UbicacionController extends Controller
 	*/
 	public function show(Ubicacion $ubicacion)
 	{
-//
+		return response()->json($ubicacion,200);
 	}
 
 	/**
@@ -57,7 +64,7 @@ class UbicacionController extends Controller
 	*/
 	public function edit(Ubicacion $ubicacion)
 	{
-//
+		return view('ubicacion.edit',compact('ubicacion'));
 	}
 
 	/**
@@ -69,7 +76,11 @@ class UbicacionController extends Controller
 	*/
 	public function update(Request $request, Ubicacion $ubicacion)
 	{
-//
+		// return $request->all();
+		$ubicacion->fill($request->all());
+		$ubicacion->save();
+
+		return redirect()->route('ubicaciones.index');
 	}
 
 	/**
@@ -80,6 +91,7 @@ class UbicacionController extends Controller
 	*/
 	public function destroy(Ubicacion $ubicacion)
 	{
-//
+		$ubicacion->delete();
+		return redirect()->route('ubicaciones.index');
 	}
 }
