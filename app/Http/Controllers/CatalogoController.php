@@ -51,9 +51,9 @@ class CatalogoController extends Controller
 	public function store(Request $request)
 	{
 		$request->validate([
-			'nombre' => 'required|alpha_num',
+			'nombre' => 'required|regex:/^[a-zA-Z0-9-_\s]+$/',
 			'tienda' => 'required',
-			'temporada' => 'alpha',
+			// 'temporada' => 'regex:/^[a-zA-Z0-9-_\s]+$/',
 			'portada' => 'image'
 		]);
 
