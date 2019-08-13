@@ -23,7 +23,7 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->firstName,
 		  'lastN' => $faker->lastName,
 		  'alias' => $faker->randomElement(['','Lic. ','','Ing. ','','Arq. ']).$faker->firstName.' '.$faker->lastName,
-        'email' => $faker->unique()->safeEmail,
+        'email' => $faker->unique()->email,
         'email_verified_at' => now(),
         'password' => bcrypt('123456'), // password
 		  'ubicacion' => $faker->randomElement($ubics),

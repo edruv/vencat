@@ -19,13 +19,18 @@ class CatalogoController extends Controller
 		// $catalogos = Catalogo::with('tienda')->get()->sortBy('tienda');
 		// $catalogos = Catalogo::all()->sortBy('tienda');
 		$catalogos = Catalogo::all()->sortBy('tienda')->sortByDesc('year');
+		// $catalogos = Catalogo::with('tienda')->get()->sortBy('tienda')->sortByDesc('year');
 
 		foreach ($catalogos as $catalogo) {
 			$t = Tienda::find($catalogo->tienda);
 			$catalogo->tienda = $t->name;
-			// echo $catalogo->tienda.'<br>';
-			// echo $catalogo->tienda.'-'.$t->name.'<br>';
 		}
+		// foreach ($catalogos as $catalogo) {
+		// 	$t = Tienda::find($catalogo->tienda);
+		// 	$catalogo->tienda = $t->name;
+		// 	// echo $catalogo->tienda.'<br>';
+		// 	// echo $catalogo->tienda.'-'.$t->name.'<br>';
+		// }
 		return view('catalogo.index',compact('catalogos'));
 	}
 
@@ -51,9 +56,9 @@ class CatalogoController extends Controller
 	public function store(Request $request)
 	{
 		$request->validate([
-			'nombre' => 'required|alpha_num',
+			'nombre' => 'required|regex:/^[a-zA-Z0-9-_\s]+$/',
 			'tienda' => 'required',
-			'temporada' => 'alpha',
+			// 'temporada' => 'regex:/^[a-zA-Z0-9-_\s]+$/',
 			'portada' => 'image'
 		]);
 

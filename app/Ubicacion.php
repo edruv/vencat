@@ -12,7 +12,7 @@ class Ubicacion extends Model
 	* @var array
 	*/
 	protected $fillable = [
-		'nombre'
+		'name'
 	];
 
 	function users(){

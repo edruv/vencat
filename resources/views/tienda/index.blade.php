@@ -8,7 +8,7 @@
 				<h5>Tiendas / Proveedores</h5>
 			</div>
 			<div class="float-right">
-				<a href="{{ route('tienda.create')}}" class=" btn btn-primary"><i class="fas fa-plus"></i>	</a>
+				<a href="{{ route('tienda.create')}}" class=" btn btn-primary"><i class="fa fa-plus"></i>	</a>
 			</div>
 
 		</div>
@@ -32,9 +32,9 @@
 							<td>{{ $tienda->name }}</td>
 							<td>
 								<div class="btn-group btn-group-sm" role="group" aria-label="actions" idi={{ $tienda->id }}>
-									{{-- <button type="button" class="btn btn-outline-dark"><i class="fas fa-eye"></i></button> --}}
-									<a href="{{ route('tienda.edit',$tienda->id) }}" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
-									<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delModal"><i class="fas fa-trash-alt"></i></button>
+									{{-- <button type="button" class="btn btn-outline-dark"><i class="fa fa-eye"></i></button> --}}
+									<a href="{{ route('tienda.edit',$tienda->id) }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+									<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delModal"><i class="fa fa-trash"></i></button>
 								</div>
 							</td>
 						</tr>
@@ -105,7 +105,7 @@
 			});
 		});
 
-		$('.fa-trash-alt').parent().click(function(event) {
+		$('.fa-trash').parent().click(function(event) {
 			$('#delModal .tri').hide();
 			var id = $(this).parent().attr('idi');
 			$.ajax({

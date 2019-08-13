@@ -6,11 +6,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     use Notifiable;
 	 use HasRolesAndPermissions;
+	 use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','lastN','alias',
+        'name', 'email', 'password','lastN','alias','ubicacion',
     ];
 
     /**
@@ -42,4 +44,11 @@ class User extends Authenticatable
 	function ubication(){
 		return $this->belongsTo('App\Ubicacion','id');
 	}
+	/**
+	 * Role User
+	 */
+	function RolUser(){
+		return $this->belongsToMany('Caffeinated\Shinobi\Models\Role','role_user')->withPivot('role_id','user_id');
+	}
+
 }
