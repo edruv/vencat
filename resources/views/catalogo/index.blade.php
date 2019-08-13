@@ -8,7 +8,7 @@
 				<h5>Catalogos</h5>
 			</div>
 			<div class="float-right">
-				<a href="{{ route('catalogos.create')}}" class=" btn btn-primary"><i class="fas fa-plus"></i>	</a>
+				<a href="{{ route('catalogos.create')}}" class=" btn btn-primary"><i class="fa fa-plus"></i>	</a>
 			</div>
 
 		</div>
@@ -20,25 +20,25 @@
 			<table class="table card-table table-responsive-sm">
 				<thead class="thead-dark">
 					<tr>
+						<th scope="col" style="">Tienda</th>
 						<th scope="col" style="">Catalogo</th>
 						<th scope="col" style="">Temporada</th>
 						<th scope="col" style="">Año</th>
-						<th scope="col" style="">Tienda</th>
 						<th scope="col">Acciones</th>
 					</tr>
 				</thead>
 				<tbody>
 					@foreach ($catalogos as $catalogo)
 						<tr>
+							<td>{{ $catalogo->tienda }}</td>
 							<td>{{ $catalogo->nombre }}</td>
 							<td>{{ $catalogo->temporada }}</td>
 							<td>{{ $catalogo->year }}</td>
-							<td>{{ $catalogo->tienda }}</td>
 							<td>
 								<div class="btn-group btn-group-sm" role="group" aria-label="actions" idi={{ $catalogo->id }}>
-									{{-- <button type="button" class="btn btn-outline-dark"><i class="fas fa-eye"></i></button> --}}
-									<a href="{{ route('catalogos.edit',$catalogo->id) }}" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
-									<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delModal"><i class="fas fa-trash-alt"></i></button>
+									{{-- <button type="button" class="btn btn-outline-dark"><i class="fa fa-eye"></i></button> --}}
+									<a href="{{ route('catalogos.edit',$catalogo->id) }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+									<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delModal"><i class="fa fa-trash"></i></button>
 								</div>
 							</td>
 						</tr>
@@ -95,27 +95,7 @@
 </div>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('.fa-eye').parent().click(function(event) {
-			var id = $(this).parent().attr('idi');
-			$.ajax({
-				url: '/catalogos/'+id,
-				type: 'GET',
-			})
-			.done(function(x) {
-
-				console.log(x);
-				console.log("success");
-			})
-			.fail(function(x) {
-				console.log(x);
-				console.log("error");
-			})
-			.always(function() {
-				console.log("complete");
-			});
-		});
-
-		$('.fa-trash-alt').parent().click(function(event) {
+		$('.fa-trash').parent().click(function(event) {
 			$('#delModal .tri').hide();
 			var id = $(this).parent().attr('idi');
 			$.ajax({
@@ -123,7 +103,6 @@
 				type: 'GET',
 			})
 			.done(function(c) {
-				console.log(c);
 				$('#delModal .mna').append(c.nombre);
 				$('#delModal .mtm').append(c.temporada);
 				$('#delModal .mst').append(c.tienda);

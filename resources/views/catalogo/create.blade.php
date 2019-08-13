@@ -11,12 +11,12 @@
 						@csrf
 						<div class="form-group">
 							<label for="nombre">Nombre</label>
-							<input type="text" class="form-control" name="nombre" id="nombre" placeholder="">
+							<input type="text" class="form-control" name="nombre" id="nombre" value="{{ old('nombre') }}" placeholder="">
 							{{-- <p class="help-block">Help text here.</p> --}}
 						</div>
 						<div class="form-group">
 							<label for="temporada">Temporada</label>
-							<input type="text" class="form-control" name="temporada" id="temporada" placeholder="">
+							<input type="text" class="form-control" name="temporada" id="temporada" value="{{ old('temporada') }}" placeholder="">
 							{{-- <p class="help-block">Help text here.</p> --}}
 						</div>
 						<div class="form-group">
@@ -48,7 +48,7 @@
 
 						<div class="form-group">
 							<label for="portada">Portada del catalogo</label>
-							<input type="file" class="form-control-file" name="portada" id="portada" placeholder="">
+							<input type="file" class="form-control-file" name="portada" id="portada" value="{{ old('portada') }}" placeholder="">
 							{{-- <p class="help-block">Help text here.</p> --}}
 						</div>
 						<div class="form-group text-center ">
@@ -60,7 +60,7 @@
 			@if ($errors->any())
 				<ul class="list-unstyled alert alert-danger" role="alert">
 					@foreach ($errors->all() as $error)
-						<li><i class="fas fa-exclamation-circle"></i> {{$error}}</li>
+						<li><i class="fa fa-exclamation-circle"></i> {{$error}}</li>
 					@endforeach
 				</ul>
 			@endif
