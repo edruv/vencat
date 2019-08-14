@@ -35,6 +35,7 @@ Route::resource('tienda','TiendaController');
 // Route::get('usuarios/rol/{role}','UserController@usrole')->name('usuarios.usrole');
 Route::resource('usuarios','UserController');
 
+Route::resource('pedidos','PedidoController');
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Auth::routes(['register' => false]);
