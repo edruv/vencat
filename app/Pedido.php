@@ -17,4 +17,8 @@ class Pedido extends Model
 	protected $fillable = [
 		'product','model','color','size','costo','page'
 	];
+
+	public function user(){
+		return $this->belongsTo('App\User','id');
+	}
 }
