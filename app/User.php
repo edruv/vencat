@@ -51,4 +51,7 @@ class User extends Authenticatable
 		return $this->belongsToMany('Caffeinated\Shinobi\Models\Role','role_user')->withPivot('role_id','user_id');
 	}
 
+	public function pedidos(){
+		return $this->hasMany('App\Pedido','id');
+	}
 }
