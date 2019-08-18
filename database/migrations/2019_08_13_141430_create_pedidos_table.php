@@ -24,7 +24,7 @@ class CreatePedidosTable extends Migration
 			$table->unsignedBigInteger('customer');
 			$table->unsignedBigInteger('taken');
 			$table->foreign('customer')->references('id')->on('users');
-			$table->foreign('taken')->references('id')->on('users');
+			$table->foreign('takenBy')->references('id')->on('users');
 			$table->SoftDeletes();
 			$table->timestamps();
 		});
