@@ -17,4 +17,8 @@ class Status extends Model
 	protected $fillable = [
 		'status',
 	];
+
+	public function pedidos(){
+		return $this->belongsTo('App\Pedido', 'id');
+	}
 }

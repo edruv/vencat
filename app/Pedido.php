@@ -21,4 +21,8 @@ class Pedido extends Model
 	public function user(){
 		return $this->belongsTo('App\User','id');
 	}
+
+	public function status(){
+		return $this->hasMany('App\Status','id');
+	}
 }
